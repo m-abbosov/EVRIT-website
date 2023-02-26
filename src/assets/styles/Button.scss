@@ -1,0 +1,19 @@
+.btn {
+  background: #FFC93E;
+  border-radius: 10px;
+  padding: 11px 29px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn span {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: 'Audiowide', cursive;
+  color: #FFFFFF;
+}

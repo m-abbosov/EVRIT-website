@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat:wght@500;700&family=Poppins:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+.container {
+  margin: 0 164px;
+}
+
+.header {
+  background: #18174B;
+  padding: 12px 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 110px;
+  }
+
+  svg {
+    width: 72px;
+    height: 60px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    a {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+
+      color: #FFFFFF;
+      font-family: 'Audiowide', cursive;
+    }
+  }
+
+  .btn {
+    margin-left: auto;
+  }
+}
+
+.section-title {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 46px;
+  color: #18174B;
+  font-family: 'Audiowide', cursive;
+}
