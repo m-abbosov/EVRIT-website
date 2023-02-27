@@ -1,14 +1,174 @@
-import React from "react";
+import React, {useState} from "react";
 import "../assets/styles/Home.scss"
 import Button from "../components/Button";
+import TeachersCarousel from "../components/TeachersCarousel";
+import CoursesCarousel from "../components/CoursesCarousel";
+
 // images
 import MainImg from "../assets/images/Illustration 1.svg"
 import MainImg2 from "../assets/images/main2-img.svg"
 import UserIcon from "../assets/images/user.svg"
 import UsersIcon from "../assets/images/users.svg"
 import BookIcon from "../assets/images/book.svg"
+import JavaImg from "../assets/images/Java.png"
+import ArrowCircleLeft from "../assets/images/arrow-circle-left.svg"
+import TeacherImg from "../assets/images/TeacherImg.png"
 
 const HomePage = () => {
+    const [tab, setTab] = useState(1);
+    const data = [
+        {
+            id: Math.random(),
+            name: "Java dasturlash kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "programming"
+        },
+        {
+            id: Math.random(),
+            name: "Python dasturlash kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "programming"
+        },
+        {
+            id: Math.random(),
+            name: "Frontend kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "programming"
+        },
+        {
+            id: Math.random(),
+            name: "Python dasturlash kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "programming"
+        },
+        {
+            id: Math.random(),
+            name: "Frontend kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "programming"
+        },
+        {
+            id: Math.random(),
+            name: "Windows Serves kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "network-administration"
+        },
+        {
+            id: Math.random(),
+            name: "Windows Serves kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "network-administration"
+        },
+        {
+            id: Math.random(),
+            name: "Windows Serves kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "network-administration"
+        },
+        {
+            id: Math.random(),
+            name: "Word kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "literacy"
+        },
+        {
+            id: Math.random(),
+            name: "Excel kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "literacy"
+        },
+        {
+            id: Math.random(),
+            name: "Power Point kursi",
+            price: 100,
+            duration: 7,
+            numberOfLessons: 40,
+            img: JavaImg,
+            type: "literacy"
+        },
+    ]
+    const teachers = [
+        {
+            id: Math.random(),
+            name: "Ricky ponting",
+            image: TeacherImg,
+            postion: "Istambul",
+        },
+        {
+            id: Math.random(),
+            name: "Cathe heavan",
+            image: TeacherImg,
+            postion: "London",
+        },
+        {
+            id: Math.random(),
+            name: "Mone morkel",
+            image: TeacherImg,
+            postion: "Toronto",
+        },
+        {
+            id: Math.random(),
+            name: "Maria sarpova",
+            image: TeacherImg,
+            postion: "Calefonia",
+        },
+
+        {
+            id: Math.random(),
+            name: "Ricky ponting",
+            image: TeacherImg,
+            postion: "Istambul",
+        },
+        {
+            id: Math.random(),
+            name: "Cathe heavan",
+            image: TeacherImg,
+            postion: "London",
+        },
+        {
+            id: Math.random(),
+            name: "Mone morkel",
+            image: TeacherImg,
+            postion: "Toronto",
+        },
+        {
+            id: Math.random(),
+            name: "Maria sarpova",
+            image: TeacherImg,
+            postion: "Calefonia",
+        }
+    ]
+
     return (
         <main className="home-page">
             <div className="container">
@@ -22,6 +182,7 @@ const HomePage = () => {
                         </p>
                         <Button text="Ro’yhatdan o’tish"/>
                     </div>
+
                     <div className="section-1__right">
                         <img src={MainImg} alt="main-img" className="section-1__right-img"/>
                     </div>
@@ -76,7 +237,49 @@ const HomePage = () => {
 
                 <section className="section-4">
                     <h2 className="section-title">Kurslar</h2>
+                    <div className="section-4__tabs">
+                        <div
+                            className={tab === 1 ? "tab active" : "tab"}
+                            onClick={() => {
+                                setTab(1);
+                            }}
+                        >
+                            Dasturlash
+                        </div>
+                        <div
+                            className={tab === 2 ? "tab active" : "tab"}
+                            onClick={() => {
+                                setTab(2);
+                            }}
+                        >
+                            Tarmoq administratorligi
+                        </div>
+                        <div
+                            className={tab === 3 ? "tab active" : "tab"}
+                            onClick={() => {
+                                setTab(3);
+                            }}
+                        >
+                            Kompyuter savodxonligi
+                        </div>
+                    </div>
 
+                    <CoursesCarousel
+                        data={tab === 1 ? data.filter(item => item.type === "programming") : tab === 2 ? data.filter(item => item.type === "network-administration") : tab === 3 ? data.filter(item => item.type === "literacy") : []}
+                        tab={tab}/>
+                    <Button text="Ko’proq ko’rish" icon={ArrowCircleLeft}/>
+                </section>
+
+                <section className="section-5">
+                    <h2 className="section-title">Bizning jamoa</h2>
+                    <TeachersCarousel data={teachers}/>
+                </section>
+
+                <section className="section-6">
+                    <h2 className="section-title">Biz bilan bog’lanish</h2>
+                    <div className="section-6__content">
+                        
+                    </div>
                 </section>
             </div>
         </main>

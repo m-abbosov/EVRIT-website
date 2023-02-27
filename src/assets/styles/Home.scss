@@ -116,4 +116,68 @@
       margin-top: 24px;
     }
   }
+
+  .section-4 {
+    margin-top: 100px;
+
+    &__tabs {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      margin: 30px 0;
+
+      .tab {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        font-family: 'Montserrat', sans-serif;
+        color: #383838;
+        cursor: pointer;
+        padding-bottom: 6px;
+
+
+        &.active {
+          color: #191919;
+          font-weight: 600;
+          padding-bottom: 0;
+
+          &::after {
+            display: block;
+            content: "";
+            width: 100%;
+            height: 1px;
+            background: #18174B;
+            margin-top: 6px;
+
+            animation-name: border;
+            animation-duration: 0.4s;
+            animation-iteration-count: 1;
+            animation-timing-function: linear;
+          }
+        }
+
+        @keyframes border {
+          0% {
+            width: 0;
+          }
+          100% {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .slick-arrow {
+      display: none !important;
+    }
+
+    button {
+      margin: 45px 0 100px auto;
+    }
+  }
+
+  .section-5 {
+    height: 450px;
+    margin-bottom: 114px;
+  }
 }

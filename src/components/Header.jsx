@@ -27,14 +27,17 @@ export const Header = () => {
                     <NavLink to="/">
                         Asosiy sahifa
                     </NavLink>
-                    <NavLink to="/">
+                    <NavLink to="/about">
                         Biz haqimizda
                     </NavLink>
-                    <NavLink to="/">
+                    <NavLink to="/course">
                         Kurslar
                     </NavLink>
                 </nav>
-                <Button text="Bog’lanish"/>
+                <div className="langConnect">
+                    <button className="lang">Uz</button>
+                    <Button text="Bog’lanish"/>
+                </div>
             </div>
         </header>
     )
