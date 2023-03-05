@@ -35,6 +35,10 @@ export default class CoursesCarousel extends Component {
         this.setState({activeSlide: nextSlide});
     }
 
+    handleNavigate(id) {
+        window.location.href = `/courses#course-${id}`
+    }
+
     render() {
         const settings = {
             dots: false,
@@ -42,6 +46,8 @@ export default class CoursesCarousel extends Component {
             speed: 500,
             slidesToShow: 3,
             slidesToScroll: 1,
+            autoPlay: true,
+            autoplaySpeed: 2000,
             nextArrow: null, // Next arrow ni null qilamiz
             prevArrow: null,
             beforeChange: (current, next) => this.changeSlide(current, next),
@@ -52,23 +58,24 @@ export default class CoursesCarousel extends Component {
                     {
                         this.props.data?.map((item, index) => {
                             return (
-                                <div className="courses-list__item" key={index + 1}>
+                                <div className="courses-list__item" onClick={() => this.handleNavigate(item.id)}
+                                     key={index + 1}>
                                     {/*<img src={item.img} className="courses-list__item-img" alt=""/>*/}
                                     <LazyLoadImage alt={item.title}
                                                    effect="blur"
-                                                   src={item.img}/>
+                                                   src={item.image}/>
                                     <div className="courses-list__item-content">
-                                        <b className="courses-list__item-price">{item.price}$</b>
+                                        <b className="courses-list__item-price">{item.price} so'm</b>
                                         <p className="courses-list__item-title">{item.name}</p>
                                         <div className="courses-list__item-bottom">
                                             <div className="duration">
                                                 <img src={CalendarIcon} alt=""/>
-                                                <p>{item.duration} oy</p>
+                                                <p>{item.months} oy</p>
                                             </div>
 
                                             <div className="numberOfLessons">
                                                 <img src={BookIcon} alt=""/>
-                                                <p>{item.numberOfLessons} ta dars</p>
+                                                <p>{item.lessons} ta dars</p>
                                             </div>
                                         </div>
                                     </div>

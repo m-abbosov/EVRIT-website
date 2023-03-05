@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Slider from "react-slick";
-import {LazyLoadImage} from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
@@ -22,6 +21,17 @@ export default class TeachersCarousel extends Component {
         };
     }
 
+    // componentDidMount() {
+    //     this.interval = setInterval(() => {
+    //         this.next()
+    //         console.log(this.state.activeSlide)
+    //     }, 2000);
+    // }
+    //
+    // componentWillUnmount() {
+    //     clearInterval(this.interval);
+    // }
+
     next() {
         this.slider.slickNext();
         this.setState({margin: !this.state.margin})
@@ -39,8 +49,8 @@ export default class TeachersCarousel extends Component {
     render() {
         const settings = {
             dots: false,
-            infinite: false,
-            speed: 500,
+            infinite: true,
+            autoPlay: true,
             slidesToShow: 4,
             slidesToScroll: 1,
             nextArrow: null,
@@ -52,25 +62,31 @@ export default class TeachersCarousel extends Component {
             <div className="teachers-list">
                 <Slider ref={(c) => (this.slider = c)} {...settings}>
                     {
-                        this.props.data?.map((item, index) => {
-                            return (
-                                <div
-                                    className={this.state.margin ? (index + 1) % 2 === 0 ? "teachers-list__item margin" : "teachers-list__item" : (index + 1) % 2 === 1 ? "teachers-list__item margin" : "teachers-list__item"}
-                                    key={index + 1}>
-                                    <LazyLoadImage alt={item.title}
-                                                   effect="blur"
-                                                   src={item.image}/>
-                                    <div className="teachers-list__item-info">
-                                        <b>{item.name}</b>
-                                        <p>{item.postion}</p>
+                        this.props.data ?
+                            this.props.data?.map((item, index) => {
+                                console.log((index + 1) % 2 === 1)
+                                return (
+                                    <div
+                                        className={this.state.margin ? (index + 1) % 2 === 0 ? "teachers-list__item margin" : "teachers-list__item" : (index + 1) % 2 === 1 ? "teachers-list__item margin" : "teachers-list__item"}
+                                        key={index + 1}>
+                                        {item.name}
+
+                                        {/*<LazyLoadImage alt={item.title}*/}
+                                        {/*               effect="blur"*/}
+                                        {/*               src={item.image}/>*/}
+                                        {/*<div className="teachers-list__item-info">*/}
+                                        {/*    <b>{item.name}</b>*/}
+                                        {/*    <p>{item.position}</p>*/}
+                                        {/*</div>*/}
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })
+                            : ""
+                    }
                 </Slider>
 
                 {
-                    this.props.data.length > 4 && (
+                    this.props.data?.length > 4 && (
                         <div className="buttons-wrapper">
                             <button
                                 className={this.state.activeSlide === 0 ? 'button disabled' : "button rotate"}

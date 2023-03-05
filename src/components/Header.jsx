@@ -3,6 +3,11 @@ import {Link, NavLink} from "react-router-dom";
 import Button from "./Button";
 
 export const Header = () => {
+
+    const handleClick = () => {
+        console.log("Hello")
+        window.location.href = "/contact"
+    }
     return (
         <header className="header">
             <div className="container">
@@ -30,13 +35,13 @@ export const Header = () => {
                     <NavLink to="/about">
                         Biz haqimizda
                     </NavLink>
-                    <NavLink to="/course">
+                    <NavLink to="/courses">
                         Kurslar
                     </NavLink>
                 </nav>
                 <div className="langConnect">
                     <button className="lang">Uz</button>
-                    <Button text="Bog’lanish"/>
+                    <Button onClick={handleClick} text="Bog’lanish"/>
                 </div>
             </div>
         </header>

@@ -14,11 +14,7 @@
 
     p {
       margin: 20px 0 40px;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 30px;
       color: #323232;
-      font-family: 'Montserrat', sans-serif;
     }
 
     button {
@@ -108,10 +104,6 @@
     gap: 103px;
 
     p {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 30px;
       color: #414141;
       margin-top: 24px;
     }
@@ -179,5 +171,13 @@
   .section-5 {
     height: 450px;
     margin-bottom: 114px;
+  }
+
+  .section-6 {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 100px;
+
   }
 }

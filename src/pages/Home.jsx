@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import "../assets/styles/Home.scss"
 import Button from "../components/Button";
 import TeachersCarousel from "../components/TeachersCarousel";
-import CoursesCarousel from "../components/CoursesCarousel";
 
 // images
 import MainImg from "../assets/images/Illustration 1.svg"
@@ -10,172 +9,21 @@ import MainImg2 from "../assets/images/main2-img.svg"
 import UserIcon from "../assets/images/user.svg"
 import UsersIcon from "../assets/images/users.svg"
 import BookIcon from "../assets/images/book.svg"
-import JavaImg from "../assets/images/Java.png"
 import ArrowCircleLeft from "../assets/images/arrow-circle-left.svg"
-import TeacherImg from "../assets/images/TeacherImg.png"
+import {ContactsForm} from "../components/ContactsForm";
+import CoursesCarousel from "../components/CoursesCarousel";
+import {useSelector} from "react-redux";
 
-const HomePage = () => {
+const HomePage = ({data}) => {
+    const {courses} = useSelector((state) => state.Reducer);
     const [tab, setTab] = useState(1);
-    const data = [
-        {
-            id: Math.random(),
-            name: "Java dasturlash kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "programming"
-        },
-        {
-            id: Math.random(),
-            name: "Python dasturlash kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "programming"
-        },
-        {
-            id: Math.random(),
-            name: "Frontend kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "programming"
-        },
-        {
-            id: Math.random(),
-            name: "Python dasturlash kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "programming"
-        },
-        {
-            id: Math.random(),
-            name: "Frontend kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "programming"
-        },
-        {
-            id: Math.random(),
-            name: "Windows Serves kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "network-administration"
-        },
-        {
-            id: Math.random(),
-            name: "Windows Serves kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "network-administration"
-        },
-        {
-            id: Math.random(),
-            name: "Windows Serves kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "network-administration"
-        },
-        {
-            id: Math.random(),
-            name: "Word kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "literacy"
-        },
-        {
-            id: Math.random(),
-            name: "Excel kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "literacy"
-        },
-        {
-            id: Math.random(),
-            name: "Power Point kursi",
-            price: 100,
-            duration: 7,
-            numberOfLessons: 40,
-            img: JavaImg,
-            type: "literacy"
-        },
-    ]
-    const teachers = [
-        {
-            id: Math.random(),
-            name: "Ricky ponting",
-            image: TeacherImg,
-            postion: "Istambul",
-        },
-        {
-            id: Math.random(),
-            name: "Cathe heavan",
-            image: TeacherImg,
-            postion: "London",
-        },
-        {
-            id: Math.random(),
-            name: "Mone morkel",
-            image: TeacherImg,
-            postion: "Toronto",
-        },
-        {
-            id: Math.random(),
-            name: "Maria sarpova",
-            image: TeacherImg,
-            postion: "Calefonia",
-        },
-
-        {
-            id: Math.random(),
-            name: "Ricky ponting",
-            image: TeacherImg,
-            postion: "Istambul",
-        },
-        {
-            id: Math.random(),
-            name: "Cathe heavan",
-            image: TeacherImg,
-            postion: "London",
-        },
-        {
-            id: Math.random(),
-            name: "Mone morkel",
-            image: TeacherImg,
-            postion: "Toronto",
-        },
-        {
-            id: Math.random(),
-            name: "Maria sarpova",
-            image: TeacherImg,
-            postion: "Calefonia",
-        }
-    ]
-
     return (
         <main className="home-page">
             <div className="container">
                 <section className="section-1">
                     <div className="section-1__left">
                         <h1>Kelajak shu yerdan boshlanadi.</h1>
-                        <p>
+                        <p className="section-info">
                             EVR IT akademiya jamoasi yillar davomida shakllangan tajriba
                             asosida o‘z faoliyatini boshlab, IT mutaxasisslarni yetkazib
                             bermoqda.
@@ -227,7 +75,7 @@ const HomePage = () => {
                         <h2 className="section-title">
                             Biz haqimizda
                         </h2>
-                        <p>
+                        <p className="section-info">
                             Biz – EVR IT akademiyasimiz! Akademiyamizda tajribali
                             IT sohasida yuqori marralarni qo‘lga kiritgan o‘qituvchilarimiz
                             tomonidan chuqur va puxta bilim beriladi.
@@ -265,21 +113,21 @@ const HomePage = () => {
                     </div>
 
                     <CoursesCarousel
-                        data={tab === 1 ? data.filter(item => item.type === "programming") : tab === 2 ? data.filter(item => item.type === "network-administration") : tab === 3 ? data.filter(item => item.type === "literacy") : []}
-                        tab={tab}/>
-                    <Button text="Ko’proq ko’rish" icon={ArrowCircleLeft}/>
+                        data={courses}
+                        // data={tab === 1 ? data.filter(item => item.type === "programming") : tab === 2 ? data.filter(item => item.type === "network-administration") : tab === 3 ? data.filter(item => item.type === "literacy") : []}
+                    />
+                    <Button onClick={() => window.location.href = "/courses"} text="Ko’proq ko’rish"
+                            icon={ArrowCircleLeft}/>
                 </section>
 
                 <section className="section-5">
                     <h2 className="section-title">Bizning jamoa</h2>
-                    <TeachersCarousel data={teachers}/>
+                    <TeachersCarousel data={data.teachers}/>
                 </section>
 
                 <section className="section-6">
                     <h2 className="section-title">Biz bilan bog’lanish</h2>
-                    <div className="section-6__content">
-                        
-                    </div>
+                    <ContactsForm/>
                 </section>
             </div>
         </main>

@@ -1,0 +1,65 @@
+.accordions {
+  margin-top: 30px;
+
+  .accordion {
+    position: relative;
+    transition: all 1s ease;
+    cursor: pointer;
+
+    &-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid #C4C4C4;
+
+      img {
+        cursor: pointer;
+      }
+
+      b {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 41px;
+        color: #000000;
+        font-family: 'Montserrat', sans-serif;
+      }
+    }
+
+    &-answer {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 30px;
+      font-family: 'Montserrat', sans-serif;
+      color: #414141;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 1.4s ease;
+    }
+
+    @keyframes fade {
+      0% {
+        max-height: 0;
+        opacity: 0;
+      }
+
+      100% {
+        max-height: 300px;
+        opacity: 1;
+      }
+    }
+
+    &.active {
+      .accordion-answer {
+        transition: all 1.4s ease;
+        animation-name: fade;
+        animation-timing-function: linear;
+        animation-iteration-count: 1;
+        animation-duration: 1s;
+        max-height: 300px;
+        padding: 20px 0;
+        border-bottom: 1px solid #C4C4C4;
+      }
+    }
+  }
+}
