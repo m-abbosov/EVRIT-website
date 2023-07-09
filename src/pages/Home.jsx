@@ -13,7 +13,19 @@ import ArrowCircleLeft from "../assets/images/arrow-circle-left.svg"
 import {ContactsForm} from "../components/ContactsForm";
 import CoursesCarousel from "../components/CoursesCarousel";
 import {useSelector} from "react-redux";
+import {animated, useSpring} from "react-spring";
 
+
+function Number ({n}){
+    const {number} = useSpring({
+        from: {number: 0},
+        number: n,
+        delay: 100,
+        config: {mass: 1,tension: 20, friction:10}
+    })
+
+    return <animated.span>{number.to((n) => n.toFixed(0))}</animated.span>
+}
 const HomePage = ({data}) => {
     const {courses} = useSelector((state) => state.Reducer);
     const [tab, setTab] = useState(1);
@@ -21,18 +33,19 @@ const HomePage = ({data}) => {
         <main className="home-page">
             <div className="container">
                 <section className="section-1">
-                    <div className="section-1__left">
-                        <h1>Kelajak shu yerdan boshlanadi.</h1>
-                        <p className="section-info">
+                    <div className="section-1__left" data-aos="fade-up">
+                        <h1 data-aos="fade-down-right">Kelajak shu yerdan boshlanadi.</h1>
+                        <p className="section-info" data-aos="fade-right">
                             EVR IT akademiya jamoasi yillar davomida shakllangan tajriba
                             asosida o‘z faoliyatini boshlab, IT mutaxasisslarni yetkazib
                             bermoqda.
                         </p>
-                        <Button text="Ro’yhatdan o’tish"/>
+                        <Button onClick={() => window.location.href = "#contact"} text="Ro’yhatdan o’tish"/>
                     </div>
 
-                    <div className="section-1__right">
+                    <div className="section-1__right" data-aos="fade-down">
                         <img src={MainImg} alt="main-img" className="section-1__right-img"/>
+                        <Button text="Ro’yhatdan o’tish" onClick={() => window.location.href = "#contact"}/>
                     </div>
                 </section>
                 <section className="section-2">
@@ -42,7 +55,8 @@ const HomePage = ({data}) => {
                                 <img src={UserIcon} alt=""/>
                             </div>
                             <div className="section-2__contents-item__right">
-                                <b>6+</b>
+                                <b>
+                                    <Number n={6} />+</b>
                                 <p>O’qtuvchilar</p>
                             </div>
                         </div>
@@ -51,7 +65,7 @@ const HomePage = ({data}) => {
                                 <img src={UsersIcon} alt=""/>
                             </div>
                             <div className="section-2__contents-item__right">
-                                <b>15+</b>
+                                <b><Number n={15} />+</b>
                                 <p>Kurslar soni</p>
                             </div>
                         </div>
@@ -60,7 +74,7 @@ const HomePage = ({data}) => {
                                 <img src={BookIcon} alt=""/>
                             </div>
                             <div className="section-2__contents-item__right">
-                                <b>1000+</b>
+                                <b><Number n={100} />+</b>
                                 <p>O’quvchilar</p>
                             </div>
                         </div>
@@ -68,14 +82,14 @@ const HomePage = ({data}) => {
                     <div className="section-2__back"></div>
                 </section>
                 <section className="section-3">
-                    <div className="section-3__left">
+                    <div className="section-3__left" data-aos="zoom-in-up">
                         <img src={MainImg2} alt="main-img"/>
                     </div>
                     <div className="section-3__right">
-                        <h2 className="section-title">
+                        <h2 className="section-title" data-aos="zoom-in-left">
                             Biz haqimizda
                         </h2>
-                        <p className="section-info">
+                        <p className="section-info" data-aos="zoom-in-up">
                             Biz – EVR IT akademiyasimiz! Akademiyamizda tajribali
                             IT sohasida yuqori marralarni qo‘lga kiritgan o‘qituvchilarimiz
                             tomonidan chuqur va puxta bilim beriladi.
@@ -84,7 +98,7 @@ const HomePage = ({data}) => {
                 </section>
 
                 <section className="section-4">
-                    <h2 className="section-title">Kurslar</h2>
+                    <h2 className="section-title" data-aos="fade-down">Kurslar</h2>
                     <div className="section-4__tabs">
                         <div
                             className={tab === 1 ? "tab active" : "tab"}
@@ -121,12 +135,12 @@ const HomePage = ({data}) => {
                 </section>
 
                 <section className="section-5">
-                    <h2 className="section-title">Bizning jamoa</h2>
+                    <h2 className="section-title" data-aos="fade-down">Bizning jamoa</h2>
                     <TeachersCarousel data={data.teachers}/>
                 </section>
 
-                <section className="section-6">
-                    <h2 className="section-title">Biz bilan bog’lanish</h2>
+                <section className="section-6"  id="contact">
+                    <h2 className="section-title" data-aos="fade-right">Biz bilan bog’lanish</h2>
                     <ContactsForm/>
                 </section>
             </div>

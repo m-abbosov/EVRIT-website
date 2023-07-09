@@ -8,15 +8,15 @@ const Contact = () => {
         <main className="contact-wrapper">
             <div className="container">
                 <section className="section-1">
-                    <h2 className="section-title">Biz bilan bog‘lanish uchun</h2>
-                    <p className="section-info">EVR IT akademiya jamoasi yillar davomida shakllangan tajriba asosida o‘z
+                    <h2 className="section-title" data-aos='fade-right'>Biz bilan bog‘lanish uchun</h2>
+                    <p className="section-info" data-aos="fade-left">EVR IT akademiya jamoasi yillar davomida shakllangan tajriba asosida o‘z
                         faoliyatini boshlab, IT
                         mutaxasisslarni yetkazib bermoqda.</p>
 
                     <ContactsForm/>
                 </section>
                 <section className="section-2">
-                    <h2 className="section-title">Manzilimiz</h2>
+                    <h2 className="section-title" data-aos="fade-right">Manzilimiz</h2>
                     <iframe
                         title="Evr It Academy"
                         className="map"

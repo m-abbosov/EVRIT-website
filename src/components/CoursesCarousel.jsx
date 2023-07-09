@@ -40,11 +40,12 @@ export default class CoursesCarousel extends Component {
     }
 
     render() {
+        console.log()
         const settings = {
             dots: false,
             infinite: false,
             speed: 500,
-            slidesToShow: 3,
+            slidesToShow: window.innerWidth > 430 ? 3 : 1,
             slidesToScroll: 1,
             autoPlay: true,
             autoplaySpeed: 2000,
@@ -60,7 +61,6 @@ export default class CoursesCarousel extends Component {
                             return (
                                 <div className="courses-list__item" onClick={() => this.handleNavigate(item.id)}
                                      key={index + 1}>
-                                    {/*<img src={item.img} className="courses-list__item-img" alt=""/>*/}
                                     <LazyLoadImage alt={item.title}
                                                    effect="blur"
                                                    src={item.image}/>
@@ -95,11 +95,11 @@ export default class CoursesCarousel extends Component {
                                      alt=""/>
                             </button>
                             <button
-                                className={this.state.activeSlide === this.props.data.length - 3 ? 'button disabled rotate' : "button "}
-                                disabled={this.state.activeSlide === this.props.data.length - 3 && true}
+                                className={this.state.activeSlide === this.props.data.length - (window.innerWidth > 430 ? 3 : 1) ? 'button disabled rotate' : "button "}
+                                disabled={this.state.activeSlide === this.props.data.length - (window.innerWidth > 430 ? 3 : 1)&& true}
                                 onClick={this.next}
                             >
-                                <img src={this.state.activeSlide === this.props.data.length - 3 ? ArrowBlue : ArrowWhite}
+                                <img src={this.state.activeSlide === this.props.data.length - (window.innerWidth > 430 ? 3 : 1) ? ArrowBlue : ArrowWhite}
                                      alt=""/>
                             </button>
                         </div>

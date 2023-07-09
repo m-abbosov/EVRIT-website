@@ -9,7 +9,8 @@ import YoutubeLogo from "../assets/images/YouTube - Negative.svg"
 
 export const Footer = () => {
     return (
-        <footer className="footer">
+        <footer className="footer" data-aos="fade-out"
+                data-aos-anchor-placement="top-bottom">
             <div className="container">
                 <div className="footer-top">
                     <div className="footer__left">
@@ -40,6 +41,20 @@ export const Footer = () => {
                         <Link to="https://goo.gl/maps/4iXcWLMvn5XcBUcZA">
                             Toshkent sh. Sergli t.
                             Oqqo’rg’on k.
+                        </Link>
+                    </div>
+                    <div className="footer__left-logos mobile">
+                        <Link to="https://www.instagram.com/">
+                            <img src={InstagramLogo} alt=""/>
+                        </Link>
+                        <Link to="">
+                            <img src={TelegramLogo} alt=""/>
+                        </Link>
+                        <Link to="">
+                            <img src={LinkedinLogo} alt=""/>
+                        </Link>
+                        <Link to="">
+                            <img src={YoutubeLogo} alt=""/>
                         </Link>
                     </div>
                 </div>

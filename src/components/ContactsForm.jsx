@@ -23,7 +23,7 @@ export const ContactsForm = () => {
         if (phone.trim() === '') {
             alert.show("Nomer kiritlmadi!")
         }
-        axios.post('https://evrit.uz/api/v1/contact/', {
+        axios.post('https://api.evrit.uz/api/v1/contact/', {
             name: name,
             number: Number(phone.split(" ").join(""))
         })
@@ -36,7 +36,7 @@ export const ContactsForm = () => {
             })
     }
     return (
-        <div className="form__content">
+        <div className="form__content" data-aos="fade-up">
             <h3>Biz bilan yuqori marralarga erishing!</h3>
             <p>Batafsil ma'lumot olish uchun ismingiz va raqamingizni qoldiring!</p>
             <form className="form" onSubmit={handleSubmit}>

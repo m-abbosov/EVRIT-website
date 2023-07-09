@@ -12,8 +12,8 @@ export const Courses = ({data}) => {
     return (
         <main className="courses-wrapper">
             <div className="container">
-                <h2 className="section-title">Kurslarmiz</h2>
-                <p className="section-info">EVR IT akademiya jamoasi yillar davomida shakllangan tajriba asosida o‘z
+                <h2 className="section-title" data-aos="fade-right">Kurslarmiz</h2>
+                <p className="section-info" data-aos='fade-left'>EVR IT akademiya jamoasi yillar davomida shakllangan tajriba asosida o‘z
                     faoliyatini boshlab, IT
                     mutaxasisslarni yetkazib bermoqda.</p>
                 <ul className="courses">

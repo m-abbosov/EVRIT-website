@@ -110,4 +110,10 @@
       }
     }
   }
+
+  @media (max-width: 430px) {
+    .buttons-wrapper {
+      top: -190px;
+    }
+  }
 }

@@ -16,9 +16,16 @@ html {
   margin: 0 164px;
 }
 
+
+
 .header {
+  position: relative;
   background: #18174B;
-  padding: 12px 0;
+  padding: 12px 0 18px;
+  animation-name: opacity;
+  animation-duration: 0.4s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
 
   .container {
     display: flex;
@@ -27,7 +34,43 @@ html {
     gap: 110px;
   }
 
-  svg {
+  .nav-mobile {
+    position: absolute;
+    top: -105vh;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    height: 105vh;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(13.5px);
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    transition: all 0.7s ease-in-out;
+
+    &.active {
+      top: 84px;
+    }
+
+    a {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 25px;
+      font-family: 'Audiowide', cursive;
+
+      color: #18174B;
+
+      &.active {
+        color: #FFCB1F;
+      }
+    }
+  }
+
+  .logo {
     width: 72px;
     height: 60px;
   }
@@ -69,8 +112,22 @@ html {
       color: #FFFFFF;
     }
   }
+
+  .burger-icon {
+    display: none;
+  }
 }
 
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 .section-title {
   font-weight: 400;
   font-size: 36px;
@@ -124,6 +181,10 @@ html {
         display: flex;
         align-items: center;
         gap: 35px;
+
+        &.mobile  {
+          display: none;
+        }
       }
     }
 
@@ -271,7 +332,164 @@ html {
         align-items: center;
       }
     }
-
-
   }
+}
+
+
+@media (max-width: 1365px) {
+  .container {
+    margin: 0 125px;
+  }
+}
+
+@media (max-width: 430px) {
+  .container {
+    margin: 0 20px;
+  }
+
+  .section-title {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .section-info {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .header {
+    .container {
+      justify-content: space-between;
+      .nav-links {
+        display: none;
+      }
+
+      .langConnect {
+        display: none;
+      }
+      
+      .burger-icon {
+        display: block;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .footer {
+    padding: 30px 0 16px;
+
+    &-top {
+      padding-bottom: 20px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .footer__left{
+      width: 100%;
+
+      .logo {
+        width: 61px;
+        height: 46px;
+      }
+
+      &-logos {
+        display: none;
+
+        &.mobile {
+          display: flex;
+          align-items: center;
+          gap: 35px;
+          height: 30px;
+        }
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        width: 100%;
+        margin: 12px 0 20px;
+      }
+    }
+
+    .footer__center{
+      b {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 32px;
+      }
+
+      a {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 32px;
+      }
+    }
+
+    .footer__right {
+      width: 143px;
+      b {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 32px;
+      }
+
+      a {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 32px;
+      }
+    }
+    .footer-bottom {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  .form__content {
+    padding: 50px 25px 50px 18px;
+    border-radius: 25px;
+
+    h3 {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 31px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      margin-bottom: 30px;
+    }
+
+    .form {
+      flex-direction: column;
+      gap: 24px;
+
+      &-input {
+        width: 100%;
+      }
+
+      &-wrapper {
+        width: 100%;
+      }
+
+      &-btn {
+        width: 100%;
+        margin: 0;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.overlay {
+  height: 100vh;
+  overflow: hidden;
 }
